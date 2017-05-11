@@ -1,0 +1,17 @@
+version: "3"
+services:
+  eqdkp:
+    build: .
+    ports:
+      - "8443:8443"
+    volumes:
+      - /etc/letsencrypt:/etc/letsencrypt
+  db:
+    image: mysql:5.7
+    volumes:
+      - /opt/eqdkp/mysql/data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=CHANGE THIS SUCKA
+      - MYSQL_DATABASE=Name of your DB
+      - MYSQL_USER=Name of your application user
+      - MYSQL_PASSWORD=Your application password
